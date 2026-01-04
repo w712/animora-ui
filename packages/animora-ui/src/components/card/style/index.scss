@@ -1,0 +1,73 @@
+// ACard 样式
+
+.a-card {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  // 阴影
+  &--shadow-always {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &--shadow-hover {
+    &:hover {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // 边框
+  &--bordered {
+    border: 1px solid #ebeef5;
+  }
+
+  // 悬停上浮动画
+  &--hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  // 悬停发光动画
+  &--hover-glow:hover {
+    box-shadow: 0 0 20px rgba(64, 158, 255, 0.4),
+                0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  // 3D 倾斜动画
+  &--tilt {
+    transition: transform 0.1s ease;
+    transform-style: preserve-3d;
+  }
+
+  // 翻转动画容器
+  &--flip {
+    perspective: 1000px;
+
+    &:hover .a-card__body {
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.a-card__header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #ebeef5;
+}
+
+.a-card__title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #303133;
+}
+
+.a-card__body {
+  padding: 20px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.a-card__footer {
+  padding: 12px 20px;
+  border-top: 1px solid #ebeef5;
+}

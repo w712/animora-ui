@@ -1,0 +1,143 @@
+// ATabs 样式
+
+.a-tabs {
+  width: 100%;
+}
+
+.a-tabs__header {
+  position: relative;
+  display: inline-flex;
+  border-bottom: 2px solid #e4e7ed;
+}
+
+.a-tabs__item {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: #606266;
+  font-size: 14px;
+  transition: all 0.3s;
+  position: relative;
+
+  &:hover:not(.is-disabled) {
+    color: #409eff;
+  }
+
+  &.is-active {
+    color: #409eff;
+    font-weight: 500;
+  }
+
+  &.is-disabled {
+    color: #c0c4cc;
+    cursor: not-allowed;
+  }
+}
+
+.a-tabs__indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background: #409eff;
+  transition: all 0.3s ease;
+}
+
+.a-tabs__content {
+  position: relative;
+  padding: 16px 0;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.a-tab-pane {
+  width: 100%;
+  transform-origin: center center;
+}
+
+// Slide 动画 - 左右滑动
+.a-tabs-slide-enter-active,
+.a-tabs-slide-leave-active {
+  transition: all 0.35s ease-out;
+}
+
+.a-tabs-slide-leave-active {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+}
+
+.a-tabs-slide-enter-from {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.a-tabs-slide-leave-to {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+// Fade 动画 - 纯透明度
+.a-tabs-fade-enter-active,
+.a-tabs-fade-leave-active {
+  transition: opacity 0.35s ease;
+}
+
+.a-tabs-fade-leave-active {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+}
+
+.a-tabs-fade-enter-from,
+.a-tabs-fade-leave-to {
+  opacity: 0;
+}
+
+// Scale 动画 - 缩放
+.a-tabs-scale-enter-active,
+.a-tabs-scale-leave-active {
+  transition: all 0.35s ease;
+}
+
+.a-tabs-scale-leave-active {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+}
+
+.a-tabs-scale-enter-from {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.a-tabs-scale-leave-to {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+// Flip 动画 - 3D翻转
+.a-tabs-flip-enter-active,
+.a-tabs-flip-leave-active {
+  transition: all 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.a-tabs-flip-leave-active {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+}
+
+.a-tabs-flip-enter-from {
+  opacity: 0;
+  transform: rotateX(-90deg);
+}
+
+.a-tabs-flip-leave-to {
+  opacity: 0;
+  transform: rotateX(90deg);
+}

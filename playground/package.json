@@ -1,0 +1,18 @@
+{
+  "name": "animora-ui-playground",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue": "^3.3.0",
+    "animora-ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "sass": "^1.69.0",
+    "vite": "^5.0.0"
+  }
+}

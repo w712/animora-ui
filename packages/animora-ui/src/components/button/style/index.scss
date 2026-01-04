@@ -1,0 +1,258 @@
+// AButton 样式
+
+.a-button {
+  --a-button-bg: #ffffff;
+  --a-button-color: #606266;
+  --a-button-border: #dcdfe6;
+  --a-button-hover-bg: #ecf5ff;
+  --a-button-hover-color: #409eff;
+  --a-button-hover-border: #c6e2ff;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  border: 1px solid var(--a-button-border);
+  border-radius: 6px;
+  background-color: var(--a-button-bg);
+  color: var(--a-button-color);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  user-select: none;
+  outline: none;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.3);
+  }
+
+  // 尺寸
+  &--small {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  &--large {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+
+  // 类型
+  &--primary {
+    --a-button-bg: #409eff;
+    --a-button-color: #ffffff;
+    --a-button-border: #409eff;
+    --a-button-hover-bg: #66b1ff;
+    --a-button-hover-border: #66b1ff;
+  }
+
+  &--success {
+    --a-button-bg: #67c23a;
+    --a-button-color: #ffffff;
+    --a-button-border: #67c23a;
+    --a-button-hover-bg: #85ce61;
+    --a-button-hover-border: #85ce61;
+  }
+
+  &--warning {
+    --a-button-bg: #e6a23c;
+    --a-button-color: #ffffff;
+    --a-button-border: #e6a23c;
+    --a-button-hover-bg: #ebb563;
+    --a-button-hover-border: #ebb563;
+  }
+
+  &--danger {
+    --a-button-bg: #f56c6c;
+    --a-button-color: #ffffff;
+    --a-button-border: #f56c6c;
+    --a-button-hover-bg: #f78989;
+    --a-button-hover-border: #f78989;
+  }
+
+  // 圆角
+  &.is-round {
+    border-radius: 20px;
+  }
+
+  &.is-circle {
+    border-radius: 50%;
+    padding: 10px;
+  }
+
+  // 禁用
+  &.is-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // 加载中
+  &.is-loading {
+    pointer-events: none;
+  }
+
+  // 悬停动画 - 缩放
+  &--hover-scale:not(.is-disabled):hover {
+    transform: scale(1.05);
+  }
+
+  // 悬停动画 - 发光
+  &--hover-glow:not(.is-disabled):hover {
+    box-shadow: 0 0 20px rgba(64, 158, 255, 0.5);
+  }
+
+  &--hover-glow.a-button--success:not(.is-disabled):hover {
+    box-shadow: 0 0 20px rgba(103, 194, 58, 0.5);
+  }
+
+  &--hover-glow.a-button--warning:not(.is-disabled):hover {
+    box-shadow: 0 0 20px rgba(230, 162, 60, 0.5);
+  }
+
+  &--hover-glow.a-button--danger:not(.is-disabled):hover {
+    box-shadow: 0 0 20px rgba(245, 108, 108, 0.5);
+  }
+
+  // 默认悬停
+  &:not(.is-disabled):hover {
+    background-color: var(--a-button-hover-bg);
+    border-color: var(--a-button-hover-border);
+    color: var(--a-button-hover-color);
+  }
+
+  &--primary:not(.is-disabled):hover,
+  &--success:not(.is-disabled):hover,
+  &--warning:not(.is-disabled):hover,
+  &--danger:not(.is-disabled):hover {
+    color: #ffffff;
+  }
+}
+
+// 内容
+.a-button__content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+// 加载图标
+.a-button__loading {
+  display: inline-flex;
+  align-items: center;
+}
+
+.a-button__loading-icon {
+  width: 14px;
+  height: 14px;
+  animation: a-button-loading-spin 1s linear infinite;
+}
+
+@keyframes a-button-loading-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// 涟漪容器
+.a-button__ripple-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+// 涟漪效果
+.a-button__ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: a-button-ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes a-button-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+// 脉冲动画
+.a-button[animation="pulse"] {
+  animation: a-button-pulse 2s ease-in-out infinite;
+}
+
+@keyframes a-button-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(64, 158, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(64, 158, 255, 0);
+  }
+}
+
+// 抖动动画
+.a-button[animation="shake"]:hover {
+  animation: a-button-shake 0.5s ease-in-out;
+}
+
+@keyframes a-button-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+// 弹跳动画
+.a-button[animation="bounce"]:hover {
+  animation: a-button-bounce 0.6s ease;
+}
+
+@keyframes a-button-bounce {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  50% { transform: translateY(-4px); }
+  70% { transform: translateY(-6px); }
+}
+
+// 发光动画
+.a-button[animation="glow"] {
+  animation: a-button-glow 2s ease-in-out infinite;
+}
+
+.a-button[animation="glow"].a-button--primary {
+  --glow-color: rgba(64, 158, 255, 0.6);
+}
+
+.a-button[animation="glow"].a-button--success {
+  --glow-color: rgba(103, 194, 58, 0.6);
+}
+
+.a-button[animation="glow"].a-button--warning {
+  --glow-color: rgba(230, 162, 60, 0.6);
+}
+
+.a-button[animation="glow"].a-button--danger {
+  --glow-color: rgba(245, 108, 108, 0.6);
+}
+
+@keyframes a-button-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--glow-color, rgba(64, 158, 255, 0.4));
+  }
+  50% {
+    box-shadow: 0 0 20px var(--glow-color, rgba(64, 158, 255, 0.6)),
+                0 0 30px var(--glow-color, rgba(64, 158, 255, 0.4));
+  }
+}

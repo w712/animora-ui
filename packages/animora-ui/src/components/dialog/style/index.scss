@@ -1,0 +1,176 @@
+// ADialog 样式
+
+.a-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.a-dialog {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.a-dialog__header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #ebeef5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.a-dialog__title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #303133;
+}
+
+.a-dialog__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #909399;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+
+  &:hover {
+    color: #409eff;
+    background: #f5f7fa;
+  }
+}
+
+.a-dialog__body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.a-dialog__footer {
+  padding: 12px 20px;
+  border-top: 1px solid #ebeef5;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+// Zoom 动画
+.a-dialog-zoom-enter-active,
+.a-dialog-zoom-leave-active {
+  transition: all 0.3s ease;
+
+  .a-dialog {
+    transition: transform 0.3s ease;
+  }
+}
+
+.a-dialog-zoom-enter-from,
+.a-dialog-zoom-leave-to {
+  opacity: 0;
+}
+
+.a-dialog-zoom-enter-from .a-dialog,
+.a-dialog-zoom-leave-to .a-dialog {
+  transform: scale(0.8);
+}
+
+// Fade 动画
+.a-dialog-fade-enter-active,
+.a-dialog-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.a-dialog-fade-enter-from,
+.a-dialog-fade-leave-to {
+  opacity: 0;
+}
+
+// Slide Down 动画
+.a-dialog-slide-down-enter-active,
+.a-dialog-slide-down-leave-active {
+  transition: all 0.3s ease;
+
+  .a-dialog {
+    transition: transform 0.3s ease;
+  }
+}
+
+.a-dialog-slide-down-enter-from,
+.a-dialog-slide-down-leave-to {
+  opacity: 0;
+}
+
+.a-dialog-slide-down-enter-from .a-dialog,
+.a-dialog-slide-down-leave-to .a-dialog {
+  transform: translateY(-50px);
+}
+
+// Slide Up 动画
+.a-dialog-slide-up-enter-active,
+.a-dialog-slide-up-leave-active {
+  transition: all 0.3s ease;
+
+  .a-dialog {
+    transition: transform 0.3s ease;
+  }
+}
+
+.a-dialog-slide-up-enter-from,
+.a-dialog-slide-up-leave-to {
+  opacity: 0;
+}
+
+.a-dialog-slide-up-enter-from .a-dialog,
+.a-dialog-slide-up-leave-to .a-dialog {
+  transform: translateY(50px);
+}
+
+// Flip 动画
+.a-dialog-flip-enter-active,
+.a-dialog-flip-leave-active {
+  transition: all 0.4s ease;
+
+  .a-dialog {
+    transition: transform 0.4s ease;
+  }
+}
+
+.a-dialog-flip-enter-from,
+.a-dialog-flip-leave-to {
+  opacity: 0;
+}
+
+.a-dialog-flip-enter-from .a-dialog,
+.a-dialog-flip-leave-to .a-dialog {
+  transform: perspective(1000px) rotateX(-90deg);
+}
+
+// Bounce 动画
+.a-dialog-bounce-enter-active {
+  animation: dialog-bounce-in 0.5s;
+}
+
+.a-dialog-bounce-leave-active {
+  animation: dialog-bounce-out 0.3s;
+}
+
+@keyframes dialog-bounce-in {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes dialog-bounce-out {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.3); }
+}
