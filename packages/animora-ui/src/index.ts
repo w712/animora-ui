@@ -6,6 +6,8 @@ import { AButton } from './components'
 import { ACard } from './components'
 import { ADialog } from './components'
 import { ATabs, ATabPane } from './components'
+import { AInput } from './components'
+import { ASelect } from './components'
 import { vAnimate } from './animations'
 
 // 导出动画系统
@@ -18,7 +20,7 @@ export * from './components'
 export * from './types'
 
 // 组件列表
-const components = [AButton, ACard, ADialog, ATabs, ATabPane]
+const components = [AButton, ACard, ADialog, ATabs, ATabPane, AInput, ASelect]
 
 // 安装函数
 export function install(app: App) {

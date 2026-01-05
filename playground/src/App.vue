@@ -26,6 +26,9 @@ import ButtonPage from './pages/ButtonPage.vue'
 import CardPage from './pages/CardPage.vue'
 import DialogPage from './pages/DialogPage.vue'
 import TabsPage from './pages/TabsPage.vue'
+import InputPage from './pages/InputPage.vue'
+import SelectPage from './pages/SelectPage.vue'
+import MessagePage from './pages/MessagePage.vue'
 import AnimatePage from './pages/AnimatePage.vue'
 
 const navItems = [
@@ -33,6 +36,9 @@ const navItems = [
   { name: 'card', label: 'Card 卡片' },
   { name: 'dialog', label: 'Dialog 对话框' },
   { name: 'tabs', label: 'Tabs 标签页' },
+  { name: 'input', label: 'Input 输入框' },
+  { name: 'select', label: 'Select 选择器' },
+  { name: 'message', label: 'Message 消息' },
   { name: 'animate', label: 'v-animate 指令' }
 ]
 
@@ -41,6 +47,9 @@ const pages: Record<string, any> = {
   card: markRaw(CardPage),
   dialog: markRaw(DialogPage),
   tabs: markRaw(TabsPage),
+  input: markRaw(InputPage),
+  select: markRaw(SelectPage),
+  message: markRaw(MessagePage),
   animate: markRaw(AnimatePage)
 }
 

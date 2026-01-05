@@ -1,0 +1,142 @@
+// AMessage 样式
+
+.a-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+  pointer-events: all;
+}
+
+.a-message__icon {
+  font-size: 16px;
+}
+
+.a-message__content {
+  color: #606266;
+}
+
+.a-message__close {
+  margin-left: 8px;
+  color: #909399;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    color: #606266;
+  }
+}
+
+// 类型样式
+.a-message--success {
+  background: #f0f9eb;
+  border: 1px solid #e1f3d8;
+
+  .a-message__icon { color: #67c23a; }
+  .a-message__content { color: #67c23a; }
+}
+
+.a-message--warning {
+  background: #fdf6ec;
+  border: 1px solid #faecd8;
+
+  .a-message__icon { color: #e6a23c; }
+  .a-message__content { color: #e6a23c; }
+}
+
+.a-message--error {
+  background: #fef0f0;
+  border: 1px solid #fde2e2;
+
+  .a-message__icon { color: #f56c6c; }
+  .a-message__content { color: #f56c6c; }
+}
+
+.a-message--info {
+  background: #f4f4f5;
+  border: 1px solid #e9e9eb;
+
+  .a-message__icon { color: #909399; }
+  .a-message__content { color: #909399; }
+}
+
+// ========== 动画 ==========
+
+// Slide 动画
+.a-message-slide-enter-active,
+.a-message-slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.a-message-slide-enter-from {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.a-message-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+// Fade 动画
+.a-message-fade-enter-active,
+.a-message-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.a-message-fade-enter-from,
+.a-message-fade-leave-to {
+  opacity: 0;
+}
+
+// Bounce 动画
+.a-message-bounce-enter-active {
+  animation: message-bounce-in 0.4s ease;
+}
+
+.a-message-bounce-leave-active {
+  animation: message-bounce-out 0.3s ease;
+}
+
+@keyframes message-bounce-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.8);
+  }
+  50% {
+    transform: translateY(10px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes message-bounce-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+// 容器样式
+.a-message-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}

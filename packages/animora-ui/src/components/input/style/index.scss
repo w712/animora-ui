@@ -1,0 +1,211 @@
+// AInput 样式
+
+.a-input {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 14px;
+}
+
+// 输入框包装器
+.a-input__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+// 输入框
+.a-input__inner {
+  flex: 1;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: inherit;
+  color: #303133;
+  line-height: 1.5;
+
+  &::placeholder {
+    color: #c0c4cc;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: #c0c4cc;
+  }
+}
+
+// 文本域
+.a-input__textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+// 前缀后缀
+.a-input__prefix,
+.a-input__suffix {
+  display: flex;
+  align-items: center;
+  color: #c0c4cc;
+  padding: 0 8px;
+}
+
+.a-input__icon {
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #409eff;
+  }
+}
+
+.a-input__clear,
+.a-input__password {
+  font-size: 12px;
+}
+
+// ========== 浮动标签动画 ==========
+.a-input__label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #909399;
+  font-size: 14px;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fff;
+  padding: 0 4px;
+  z-index: 1;
+}
+
+// 有值或聚焦时，标签上浮
+.a-input.has-value .a-input__label,
+.a-input.is-focus .a-input__label {
+  top: 0;
+  transform: translateY(-50%) scale(0.85);
+  color: #409eff;
+}
+
+// ========== 聚焦发光动画 ==========
+.a-input[data-focus-animation="glow"] {
+  .a-input__wrapper {
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  &.is-focus .a-input__wrapper {
+    border-color: #409eff;
+    box-shadow: 0 0 0 3px rgba(64, 158, 255, 0.15);
+  }
+}
+
+// 边框动画
+.a-input[data-focus-animation="border"] {
+  .a-input__wrapper {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #409eff;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+  }
+
+  &.is-focus .a-input__wrapper::after {
+    width: 100%;
+  }
+}
+
+// ========== 错误状态 & 抖动动画 ==========
+.a-input.is-error {
+  .a-input__wrapper {
+    border-color: #f56c6c;
+  }
+
+  .a-input__label {
+    color: #f56c6c;
+  }
+
+  &[data-focus-animation="glow"].is-focus .a-input__wrapper {
+    box-shadow: 0 0 0 3px rgba(245, 108, 108, 0.15);
+  }
+
+  // 抖动动画
+  animation: a-input-shake 0.5s ease;
+}
+
+@keyframes a-input-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+// 错误信息动画
+.a-input__error {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #f56c6c;
+}
+
+.a-input-error-enter-active,
+.a-input-error-leave-active {
+  transition: all 0.25s ease;
+}
+
+.a-input-error-enter-from,
+.a-input-error-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+// ========== 尺寸 ==========
+.a-input--small {
+  font-size: 12px;
+
+  .a-input__inner {
+    padding: 6px 10px;
+  }
+
+  .a-input__label {
+    font-size: 12px;
+    left: 10px;
+  }
+}
+
+.a-input--large {
+  font-size: 16px;
+
+  .a-input__inner {
+    padding: 14px 16px;
+  }
+
+  .a-input__label {
+    font-size: 16px;
+    left: 16px;
+  }
+}
+
+// ========== 禁用状态 ==========
+.a-input.is-disabled {
+  .a-input__wrapper {
+    background: #f5f7fa;
+    cursor: not-allowed;
+  }
+
+  .a-input__label {
+    color: #c0c4cc;
+  }
+}
